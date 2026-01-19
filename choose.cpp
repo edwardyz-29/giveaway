@@ -36,9 +36,7 @@ int main() {
         return 1;
     }
 
-    cout << "=================================\n";
     cout << "    GIVEAWAY WINNER SELECTOR    \n";
-    cout << "=================================\n\n";
 
     // Seed random number generator with current time
     unsigned seed = static_cast<unsigned>(
@@ -51,7 +49,7 @@ int main() {
         size_t numEntries = entries.size();
 
         if (numEntries == 0) {
-            cout << "No more entries remaining!\n";
+            cout << "No more entries\n";
             return 1;
         }
 
@@ -61,7 +59,7 @@ int main() {
         size_t winnerIndex = dist(rng);
         auto winner = entries[winnerIndex];
 
-        cout << "*** AND THE WINNER IS... ***\n\n";
+        cout << "winner: \n";
         cout << "Name:    " << winner["fullName"].get<string>() << "\n";
         cout << "Email:   " << winner["email"].get<string>() << "\n";
         cout << "Discord: " << winner["discord"].get<string>() << "\n";
@@ -80,16 +78,13 @@ int main() {
         string input;
         getline(cin, input);
 
-        if (input == "y" || input == "Y" || input == "yes" || input == "Yes") {
-            cout << "\n=================================\n";
-            cout << "Congratulations to the winner!\n";
-            cout << "=================================\n";
+        if (input == "y") {
+            cout << "done\n";
             return 0;
         } else {
-            cout << "\nRemoving unverified entry and selecting another winner...\n\n";
+            cout << "\nremoved unverified entry\n\n";
             entries.erase(entries.begin() + winnerIndex);
             saveEntries(data);
-            cout << "---------------------------------\n\n";
         }
     }
 
