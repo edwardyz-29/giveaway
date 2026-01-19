@@ -1,0 +1,20 @@
+# Compiled binary
+choose
+
+# JSON data (contains personal info)
+giveaway-entries.json
+
+# Zone.Identifier files (Windows/WSL)
+*:Zone.Identifier
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
