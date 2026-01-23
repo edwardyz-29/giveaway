@@ -14,7 +14,6 @@ void saveEntries(const json& data) {
 }
 
 int main() {
-    // Read the JSON file
     ifstream file("giveaway-entries.json");
     if (!file.is_open()) {
         cerr << "Error: Could not open giveaway-entries.json\n";
@@ -29,16 +28,11 @@ int main() {
         return 1;
     }
     file.close();
-
-    // Get the entries array
     if (!data.contains("entries") || data["entries"].empty()) {
         cerr << "Error: No entries found in the JSON file\n";
         return 1;
     }
-
     cout << "    GIVEAWAY WINNER SELECTOR    \n";
-
-    // Seed random number generator with current time
     unsigned seed = static_cast<unsigned>(
         chrono::system_clock::now().time_since_epoch().count()
     );
