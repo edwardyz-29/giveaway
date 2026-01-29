@@ -13,6 +13,10 @@ void saveEntries(const json& data) {
     outFile.close();
 }
 
+void printJson(const json& data) {
+    cout << "\n" << data.dump(2) << "\n\n";
+}
+
 int main() {
     ifstream file("giveaway-entries.json");
     if (!file.is_open()) {
@@ -68,13 +72,15 @@ int main() {
             cout << "\n";
         }
 
-        cout << "\nIs this a verified account? (y/n): ";
+        cout << "\nIs this a verified account? (y/n/p to print json): ";
         string input;
         getline(cin, input);
 
         if (input == "y") {
             cout << "done\n";
             return 0;
+        } else if (input == "p") {
+            printJson(winner);
         } else {
             cout << "\nremoved unverified entry\n\n";
             entries.erase(entries.begin() + winnerIndex);
